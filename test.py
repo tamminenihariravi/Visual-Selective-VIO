@@ -12,7 +12,7 @@ import numpy as np
 import math
 
 parser = argparse.ArgumentParser(formatter_class=argparse.ArgumentDefaultsHelpFormatter)
-parser.add_argument('--data_dir', type=str, default='/nfs/turbo/coe-hunseok/mingyuy/KITTI_odometry', help='path to the dataset')
+parser.add_argument('--data_dir', type=str, default='./data/kitti_data', help='path to the dataset')
 parser.add_argument('--gpu_ids', type=str, default='0', help='gpu ids: e.g. 0  0,1,2, 0,2. use -1 for CPU')
 parser.add_argument('--save_dir', type=str, default='./results', help='path to save the result')
 parser.add_argument('--seq_len', type=int, default=11, help='sequence length for LSTM')
@@ -68,7 +68,7 @@ def main():
     # Model initialization
     model = DeepVIO(args)
 
-    model.load_state_dict(torch.load(args.model))
+    model.load_state_dict(torch.load(args.model, map_location='cpu'))
     print('load model %s'%args.model)
         
     # Feed model to GPU
@@ -90,7 +90,6 @@ def main():
 
 if __name__ == "__main__":
     main()
-
 
 
 

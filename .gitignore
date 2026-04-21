@@ -1,0 +1,18 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+
+# Data (too large for git)
+data/kitti_data/
+pretrain_models/
+
+# Results
+results/
+
+# IDE
+.vscode/
+.idea/
+
+# PDF
+*.pdf
